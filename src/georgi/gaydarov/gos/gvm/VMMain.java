@@ -3,10 +3,7 @@ package georgi.gaydarov.gos.gvm;
 import georgi.gaydarov.gos.gvm.coder.Decoder;
 import georgi.gaydarov.gos.gvm.coder.Operation;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.LinkedList;
-import java.util.List;
 
 
 public class VMMain {
@@ -23,8 +20,13 @@ public class VMMain {
 		{
 			Operation op = decoder.getNextOperation();
 			System.out.println(op.getReadable());
-			machine.execute(op);
+			machine.addOperation(op);
 		}
+		
+		System.out.println();
+		
+		machine.loadOperations();
+		machine.run();
 	}
 	
 
